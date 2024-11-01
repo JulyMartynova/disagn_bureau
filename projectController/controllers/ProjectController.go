@@ -82,7 +82,7 @@ func DeleteProject(c *gin.Context) {
 
 // }
 
-func getAllProjectsController(c *gin.Context) {
+func GetAllProjectsController(c *gin.Context) {
 	var projects []models.Project
 	if err := initializers.DB.Find(&projects).Error; err != nil {
 		logrus.WithFields(logrus.Fields{
@@ -92,7 +92,7 @@ func getAllProjectsController(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, projects)
 }
-func getCompletedProjectsController(c *gin.Context) {
+func GetCompletedProjectsController(c *gin.Context) {
 	var projects []models.Project
 	if err := initializers.DB.Where("project_type = ", models.projectType.Completed).Find(&projects); err != nil {
 		logrus.WithFields(logrus.Fields{
@@ -104,7 +104,7 @@ func getCompletedProjectsController(c *gin.Context) {
 	c.JSON(http.StatusOK, projects)
 }
 
-func getInitialProjectsController(c *gin.Context) {
+func GetInitialProjectsController(c *gin.Context) {
 	var projects []models.Project
 	if err := initializers.DB.Where("project_type = ", models.projectType.Initial).Find(&projects); err != nil {
 		logrus.WithFields(logrus.Fields{
@@ -116,7 +116,7 @@ func getInitialProjectsController(c *gin.Context) {
 	c.JSON(http.StatusOK, projects)
 }
 
-func getFutureProjectsController(c *gin.Context) {
+func GetFutureProjectsController(c *gin.Context) {
 	var projects []models.Project
 	if err := initializers.DB.Where("project_type = ?", models.projectType.Future).Find(&projects); err != nil {
 		logrus.WithFields(logrus.Fields{
@@ -128,7 +128,7 @@ func getFutureProjectsController(c *gin.Context) {
 	c.JSON(http.StatusOK, projects)
 }
 
-func getProjectByIDController(c *gin.Context) {
+func GetProjectByIDController(c *gin.Context) {
 	var project models.Project
 	project, _ = c.Get("project")
 
