@@ -1,17 +1,18 @@
 package initializers
 
 import (
+	"os"
+
 	"github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"os"
 )
 
 var DB *gorm.DB
 
 func connectToDB() {
 	var err error
-	url := os.Getenv("DB") 
+	url := os.Getenv("DB")
 	DB, err = gorm.Open(postgres.Open(url), &gorm.Config{})
 
 	if err != nil {

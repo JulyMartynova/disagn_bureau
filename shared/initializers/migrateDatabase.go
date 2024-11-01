@@ -1,12 +1,13 @@
 package initializers
+
 import (
 	"shared/models"
-	"fmt"
+
 	"github.com/sirupsen/logrus"
 )
 
-func migrateModels(){
-	if !DB.HasTable(models.Project){
+func migrateModels() {
+	if !DB.HasTable(models.Project) {
 		if err := DB.AutoMigrate(models.Project); err != nil {
 			if err := DB.AutoMigrate(models.Project); err != nil {
 				logrus.WithError(err).Error("Database migration for projects failed", err)
@@ -15,7 +16,7 @@ func migrateModels(){
 			}
 		}
 	}
-	if !DB.HasTable(models.Partner){
+	if !DB.HasTable(models.Partner) {
 		if err := DB.AutoMigrate(models.Partner); err != nil {
 			if err := DB.AutoMigrate(models.Partner); err != nil {
 				logrus.WithError(err).Error("Database migration for partners failed", err)
