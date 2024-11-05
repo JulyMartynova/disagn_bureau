@@ -8,8 +8,8 @@ import (
 
 func SetupRouter(route *gin.Engine) {
 	public := route.Group("/projects")
-	public.GET("/projects", controllers.GetAllProjectsController)
-	public.GET("projects/:id", controllers.GetProjectByIDController)
-	public.DELETE("projects/:id/delete", controllers.DeleteProject)
-	public.POST("/projects/create", controllers.CreateProjectController)
+	public.GET("/", controllers.GetAllProjectsController)
+	public.GET("/:id", controllers.GetProjectByIDController)
+	public.DELETE("/:id/delete", controllers.DeleteProject)
+	public.POST("/create", controllers.CreateProjectController)
 }
