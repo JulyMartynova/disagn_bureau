@@ -1,9 +1,9 @@
 package main
 
 import (
-	"controllers"
-	"shared/initializers"
-	"routes"
+	"projectControllers/test"
+	"disagn_bureau/shared/initializers"
+	"projectControllers/routes"
 )
 
 func init(){
@@ -14,11 +14,12 @@ func init(){
 
 func main() {
 
+
 	r = gin.Default()
 
 	r.Use(
 		cors.New(cors.Config{
-			AllowOrigin: []string{"https://dbbp.ru"}
+			AllowOrigin: []string{"http:/localhost"}
 			AllowMethods: []string{"GET", "POST", "DELETE"}
 			AllowHeaders: []string{"Origin","ContentLength", "ContentType"}
 		})
@@ -27,6 +28,12 @@ func main() {
 
 	routes.Setup(r)
 	logrus.Info("Starting project service")
+	
+	if err := r.Run(":8080"); err != nil {
+		logrus.Fatal("error with service: ", err)
+		panic(err)	
+	}
+
 	
 
 }

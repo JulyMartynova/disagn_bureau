@@ -1,86 +1,80 @@
-package projectController
+package test
 
-import (
-	"models"
+import ( 
+	"disagn_bureau/shared/initializers"
+	"disagn_bureau/shared/models"
 	"net/http"
-	"shared/initializers"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"gorm.io/datatypes"
 )
-
 type ProjectInput struct {
 	Name     string             `json:"project_name" binding:"required"`
 	Type     models.ProjectType `json:"project_type" binding:"required"`
-	Partners []string           `json:"partners" binding:"required"`
+	
 }
 
 // only for admins
-func CreateProject(c *gin.Context) {
-	var input ProjectInput
+// func CreateProject(c *gin.Context) {
+// 	var input ProjectInput
 
-	if err := c.Bind(&input); err != nil {
-		logrus.WithFields(logrus.Fields{
-			"error": err.Error(),
-		}).Error("Failed to bind")
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-	date := datatypes.Date(time.Now())
+// 	if err := c.Bind(&input); err != nil {
+// 		logrus.WithFields(logrus.Fields{
+// 			"error": err.Error(),
+// 		}).Error("Failed to bind")
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		return
+// 	}
+// 	imagePath := ""
+// 	if input.Image != nil {
+// 		imagePath = filepath.Join("uploads", input.Image.Filename)
+// 		if err := c.SaveUploadedFile(input.Image, imagePath); err != nil {
+// 			logrus.WithFields(logrus.Fields{
+// 				"error": err.Error(),
+// 			}).Error("Failed to save image")
+// 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 			return
+// 		}
+// 	}
+// 	date := datatypes.Date(time.Now())
 
-	var partners []models.Partner
-	for _, p := range input.Partners {
-		var partner models.Partner
-		if err := initializers.DB.Where("name=?", p).Find(&partner); err != nil {
-			logrus.WithFields(logrus.Fields{
-				"error": err.Error(),
-			}).Error("Failed to find partner")
-			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
-			return
-		}
-		partners.append(partner)
-	}
-	projectRequest := models.Project{
-		name:        input.Name,
-		projectType: input.Type,
-		partners:    partners,
-		date:        date,
-	}
+// 	projectRequest := models.Project{
+// 		name:        input.Name,
+// 		projectType: input.Type,
+// 		date:        date,
+// 		image: input.Image,
+// 	}
 
-	if err := initializers.DB.Create(&projectRequest); err != nil {
-		logrus.WithFields(logrus.Fields{
-			"error": err.Error(),
-		}).Error("Failed to create project request")
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
+// 	if err := initializers.DB.Create(&projectRequest); err != nil {
+// 		logrus.WithFields(logrus.Fields{
+// 			"error": err.Error(),
+// 		}).Error("Failed to create project request")
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		return
+// 	}
 
-	logrus.WithFields(logrus.Fields{
-		"project_name": input.Name,
-		"project_type": input.Type,
-		"partners":     partners,
-		"date":         date,
-	}).Info("Project is created successfully")
+// 	logrus.WithFields(logrus.Fields{
+// 		"project_name": input.Name,
+// 		"project_type": input.Type,
+// 		"date":         date,
+// 	}).Info("Project is created successfully")
 
-	c.JSON(http.StatusOK, projectRequest)
-
-}
-func DeleteProject(c *gin.Context) {
-	project, _ := c.Get("project")
-
-	initializers.DB.Delete(&project)
-
-	logrus.Info(
-		"Project is deleted successfully")
-
-	c.JSON(http.StatusOK, gin.H{"data": true})
-}
-
-// func UpdateProject(c *gin.Context) {
+// 	c.JSON(http.StatusOK, projectRequest)
 
 // }
+// func DeleteProject(c *gin.Context) {
+// 	project, _ := c.Get("project")
+
+// 	initializers.DB.Delete(&project)
+
+// 	logrus.Info(
+// 		"Project is deleted successfully")
+
+// 	c.JSON(http.StatusOK, gin.H{"data": true})
+// }
+
 
 func GetAllProjectsController(c *gin.Context) {
 	var projects []models.Project
@@ -141,3 +135,4 @@ func GetProjectByIDController(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, project)
 }
+

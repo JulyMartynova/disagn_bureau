@@ -19,5 +19,6 @@ type Project struct {
 	name        string         `gorm:"notnull"`
 	projectType ProjectType    `gorm:"notnull"`
 	date        datatypes.Date `gorm:"notnull"`
-	Partners    []Partner      `gorm:"many2many:project_partners;"`
+	image       string
+	
 }

@@ -1,7 +1,7 @@
 package initializers
 
 import (
-	"shared/models"
+	"disagn_bureau/shared/models"
 
 	"github.com/sirupsen/logrus"
 )
