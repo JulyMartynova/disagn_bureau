@@ -15,10 +15,10 @@ const (
 
 type Project struct {
 	gorm.Model
-	ID          uint           `gorm:"primary_key"`
-	name        string         `gorm:"notnull"`
-	projectType ProjectType    `gorm:"notnull"`
-	date        datatypes.Date `gorm:"notnull"`
-	image       string
+	ID          uint           `gorm:"primaryKey"`
+	Name        string         `gorm:"notnull"`
+	ProjectType ProjectType    `gorm:"notnull"`
+	Date        datatypes.Date `gorm:"notnull"`
+	Image       string
 	
 }

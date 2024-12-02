@@ -1,32 +1,30 @@
 package main
 
 import (
-	"projectControllers/test"
 	"disagn_bureau/shared/initializers"
-	"projectControllers/routes"
+	"disagn_bureau/projectController/routes"
+	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
+	"github.com/sirupsen/logrus"
 )
 
 func init(){
-	initializers.loadEnvVariables()
-	initializers.connectToDB()
-	initializers.migrateDatabase()
+	initializers.LoadEnvVariables()
+	initializers.ConnectToDB()
+	initializers.MigrateModels()
 }
 
 func main() {
 
+	r := gin.Default()
 
-	r = gin.Default()
+	r.Use(cors.New(cors.Config{
+			AllowOrigins: []string{"http://localhost"},
+			AllowMethods: []string{"GET", "POST", "DELETE"},
+			AllowHeaders: []string{"Origin","ContentLength", "ContentType"},
+		}))
 
-	r.Use(
-		cors.New(cors.Config{
-			AllowOrigin: []string{"http:/localhost"}
-			AllowMethods: []string{"GET", "POST", "DELETE"}
-			AllowHeaders: []string{"Origin","ContentLength", "ContentType"}
-		})
-
-	)
-
-	routes.Setup(r)
+	routes.SetupRouter(r)
 	logrus.Info("Starting project service")
 	
 	if err := r.Run(":8080"); err != nil {

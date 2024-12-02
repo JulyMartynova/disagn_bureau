@@ -1,14 +1,12 @@
-package test
+package controllers
 
 import ( 
 	"disagn_bureau/shared/initializers"
 	"disagn_bureau/shared/models"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"gorm.io/datatypes"
 )
 type ProjectInput struct {
 	Name     string             `json:"project_name" binding:"required"`
@@ -76,63 +74,67 @@ type ProjectInput struct {
 // }
 
 
+// func GetCompletedProjectsController(c *gin.Context) {
+// 	var projects []models.Project
+// 	if err := initializers.DB.Where("project_type = ", models.projectModel.ProjectType.Completed).Find(&projects); err != nil {
+// 		logrus.WithFields(logrus.Fields{
+// 			"err": err.Error(),
+// 		}).Error("Failed to retrieve completed projects")
+// 		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
+// 	}
+
+// 	c.JSON(http.StatusOK, projects)
+// }
+
+// func GetInitialProjectsController(c *gin.Context) {
+// 	var projects []models.Project
+// 	if err := initializers.DB.Where("project_type = ", models.projectModel.ProjectType.Initial); err != nil {}.Find(&projects); err != nil {
+// 		logrus.WithFields(logrus.Fields{
+// 			"err": err.Error(),
+// 		}).Error("Failed to retrieve initial projects")
+// 		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
+// 	}
+
+// 	c.JSON(http.StatusOK, projects)
+// }
+
+// func GetFutureProjectsController(c *gin.Context) {
+// 	var projects []models.Project
+// 	if err := initializers.DB.Where("project_type = ?", models.projectModel.ProjectType.Future).Find(&projects); err != nil {
+// 		logrus.WithFields(logrus.Fields{
+// 			"err": err.Error(),
+// 		}).Error("Failed to retrieve future projects")
+// 		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
+// 	}
+
+// 	c.JSON(http.StatusOK, projects)
+// }
+
+func GetProjectByIDController(c *gin.Context) {
+	var project models.Project
+	projectID := c.Param("id")
+
+	if err := initializers.DB.Where("id = ?", projectID).First(&project).Error; err != nil {
+		logrus.WithFields(logrus.Fields{
+			"project_id": projectID,
+			"err":        err.Error(),
+		}).Error("Project is not found")
+		c.JSON(http.StatusNotFound, gin.H{"error": "Project not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, project)
+}
+
 func GetAllProjectsController(c *gin.Context) {
 	var projects []models.Project
 	if err := initializers.DB.Find(&projects).Error; err != nil {
 		logrus.WithFields(logrus.Fields{
 			"err": err.Error(),
-		}).Error("Projects are not found")
-		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
-	}
-	c.JSON(http.StatusOK, projects)
-}
-func GetCompletedProjectsController(c *gin.Context) {
-	var projects []models.Project
-	if err := initializers.DB.Where("project_type = ", models.projectType.Completed).Find(&projects); err != nil {
-		logrus.WithFields(logrus.Fields{
-			"err": err.Error(),
-		}).Error("Failed to retrieve completed projects")
-		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
+		}).Error("Failed to fetch projects")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch projects"})
+		return
 	}
 
 	c.JSON(http.StatusOK, projects)
 }
-
-func GetInitialProjectsController(c *gin.Context) {
-	var projects []models.Project
-	if err := initializers.DB.Where("project_type = ", models.projectType.Initial).Find(&projects); err != nil {
-		logrus.WithFields(logrus.Fields{
-			"err": err.Error(),
-		}).Error("Failed to retrieve initial projects")
-		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
-	}
-
-	c.JSON(http.StatusOK, projects)
-}
-
-func GetFutureProjectsController(c *gin.Context) {
-	var projects []models.Project
-	if err := initializers.DB.Where("project_type = ?", models.projectType.Future).Find(&projects); err != nil {
-		logrus.WithFields(logrus.Fields{
-			"err": err.Error(),
-		}).Error("Failed to retrieve future projects")
-		c.JSON(http.StatusInternalServerError, gin.H{err: err.Error()})
-	}
-
-	c.JSON(http.StatusOK, projects)
-}
-
-func GetProjectByIDController(c *gin.Context) {
-	var project models.Project
-	project, _ = c.Get("project")
-
-	if err := initializers.DB.Where("id = ?", project.ID).Find(&project).Error; err != nil {
-		logrus.WithFields(logrus.Fields{
-			"project_id": project.ID,
-			"err":        err.Error(),
-		}).Error("Project is not found")
-		c.JSON(http.StatusNotFound, gin.H{err: err.Error()})
-	}
-	c.JSON(http.StatusOK, project)
-}
-

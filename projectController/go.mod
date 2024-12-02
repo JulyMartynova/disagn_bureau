@@ -1,12 +1,12 @@
-module projectControllers
+module disagn_bureau/projectController
 
 go 1.22.4
 
 require (
 	disagn_bureau/shared v0.0.0
+	github.com/gin-contrib/cors v1.7.2
 	github.com/gin-gonic/gin v1.10.0
 	github.com/sirupsen/logrus v1.9.3
-	gorm.io/datatypes v1.2.4
 )
 
 require (
@@ -49,6 +49,7 @@ require (
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+	gorm.io/datatypes v1.2.4 // indirect
 	gorm.io/driver/mysql v1.5.6 // indirect
 	gorm.io/driver/postgres v1.5.10 // indirect
 	gorm.io/gorm v1.25.12 // indirect
