@@ -1,6 +1,6 @@
 package controllers
 
-import ( 
+import (
 	"disagn_bureau/shared/initializers"
 	"disagn_bureau/shared/models"
 	"net/http"
@@ -8,10 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
+
 type ProjectInput struct {
-	Name     string             `json:"project_name" binding:"required"`
-	Type     models.ProjectType `json:"project_type" binding:"required"`
-	
+	Name string             `json:"project_name" binding:"required"`
+	Type models.ProjectType `json:"project_type" binding:"required"`
 }
 
 // only for admins
@@ -72,7 +72,6 @@ type ProjectInput struct {
 
 // 	c.JSON(http.StatusOK, gin.H{"data": true})
 // }
-
 
 // func GetCompletedProjectsController(c *gin.Context) {
 // 	var projects []models.Project
