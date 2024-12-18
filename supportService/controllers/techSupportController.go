@@ -9,6 +9,22 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+func GetProjectsController(c *gin.Context) {
+	var projects [] models.Project
+
+	if err := initializers.DB.Find(&projects).Error; err != nil {
+		logrus.WithFields(logrus.Fields{
+			"error": err.Error(),
+		}).Error("Projects are not found")
+		c.JSON(http.StatusNotFound, gin.H{"error" : "Projects are not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"projects": projects,
+	})
+}
+
 func GetDocumentationAndSoftwareByProjectID(c *gin.Context) {
 	id := c.Param("id")
 

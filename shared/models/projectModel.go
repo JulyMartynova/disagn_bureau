@@ -19,6 +19,7 @@ type Project struct {
 	Name        string         `gorm:"notnull"`
 	ProjectType ProjectType    `gorm:"notnull"`
 	Date        datatypes.Date `gorm:"notnull"`
+	Description string 
 	Image       string
 	
 }

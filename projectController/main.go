@@ -20,7 +20,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"*"},
+		AllowOrigins: []string{"http://localhost:8000"},
 		AllowMethods: []string{"GET", "POST", "DELETE"},
 		AllowHeaders: []string{"Origin", "ContentLength", "ContentType"},
 	}))
@@ -28,7 +28,7 @@ func main() {
 	routes.SetupRouter(r)
 	logrus.Info("Starting project service")
 
-	if err := r.Run(":8080"); err != nil {
+	if err := r.Run(":8081"); err != nil {
 		logrus.Fatal("error with service: ", err)
 		panic(err)
 	}
