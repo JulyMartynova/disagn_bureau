@@ -20,7 +20,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    /*height: 100vh;*/
+    height: 140vh;
     width: 100%;
     color: black; /* Цвет текста, чтобы был виден на фоне */
     display: flex;
@@ -111,4 +111,45 @@
 
 .carousel-button.right {
     right: 10px;
+}
+
+.contact-info {
+    display: flex; /* Используем Flexbox */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    gap: 10px
+}
+.telegram-button {
+    background-color: #2aabee; /* Голубой цвет фона кнопки */
+    color: white; /* Белый цвет текста кнопки */
+    border: none; /* Убираем границу */
+    padding: 5px 15px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    border-radius: 20px; /* Закругленные углы */
+    display: flex; /* Используем Flexbox для выравнивания иконки и текста */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    gap: 5px; /* Расстояние между иконкой и текстом */
+    font-size: 14px; /* Размер текста */
+    transition: background-color 0.3s; /* Плавный переход */
+    text-decoration: none;
+}
+
+.telegram-button:hover {
+    background-color: #0056b3; /* Темно-голубой цвет фона при наведении */
+    text-decoration: none;
+}
+.telegram-button:active,
+.telegram-button:focus {
+    text-decoration: none; /* Убираем подчеркивание */
+}
+.telegram-icon{
+    font-size: 18px; /* Размер иконки */
+    color: white;
+}
+.google-map {
+    margin-top: 20px; /* Отступ сверху */
+    border: 1px solid #ccc; /* Рамка вокруг карты */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    width: 40%; /* Ширина карты */
+    height: 400px; /* Высота карты */
+    border: none; 
 }

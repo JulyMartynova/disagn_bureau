@@ -2,9 +2,9 @@ import axios from "axios";
 import {BASE_URL} from "./api";
 
 export interface Projects {
-    image: string;
-    title: string;
-    description: string;
+    //Image: string;
+    Name: string;
+    //Description: string;
 }
 
 

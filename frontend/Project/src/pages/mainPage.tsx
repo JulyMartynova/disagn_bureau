@@ -10,14 +10,14 @@ const MainPage = () => {
 
     const loadProject = async (id: number) => {
         setLoading(true);
-        try {
-            const res = await fetchPhotos(id);
-            setProject(res);
-        } catch (err) {
-            console.error("Ошибка при загрузке проекта:", err);
-        } finally {
-            setLoading(false);
-        }
+        // try {
+        //     const res = await fetchPhotos(id);
+        //     setProject(res);
+        // } catch (err) {
+        //     console.error("Ошибка при загрузке проекта:", err);
+        // } finally {
+        //     setLoading(false);
+        // }
     };
 
     useEffect(() => {
@@ -47,11 +47,11 @@ const MainPage = () => {
                         <div>Загрузка...</div>
                     ) : project ? (
                         <>
-                            <div className="project-image">
-                                <img src={project.image} alt={project.title}/>
-                            </div>
-                            <h2>{project.title}</h2>
-                            <span className="project-decription">{project.description}</span>
+                            {/* <div className="project-image">
+                                <img src={project.Image} alt={project.title}/>
+                            </div> */}
+                            <h2>{project.Name}</h2>
+                            {/* <span className="project-decription">{project.description}</span> */}
                             <button className="project-button">Перейти</button>
                         </>
                     ) : (
