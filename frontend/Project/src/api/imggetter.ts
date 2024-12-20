@@ -1,10 +1,10 @@
 import axios from "axios";
-import {BASE_URL} from "./api";
+import {BASE_URL, SUPPORT_URL} from "./api";
 
 export interface Projects {
-    //Image: string;
+    Image: string;
     Name: string;
-    //Description: string;
+    Description: string;
 }
 
 

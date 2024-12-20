@@ -20,7 +20,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    height: 140vh;
+    height: 230vh;
     width: 100%;
     color: black; /* Цвет текста, чтобы был виден на фоне */
     display: flex;
@@ -30,6 +30,7 @@
     text-align: center;
     font-size: 16px; /* Увеличим размер текста для лучшей видимости */
     z-index: 1; /* Поместим содержимое выше */
+    
 }
 
 .bg_scroll::after {
@@ -45,13 +46,89 @@
 
 .bg_scroll h1, h2 {
     font-size: 1.6rem;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .bg_scroll h1{
     margin-top: 15vh;
 }
 
+.bg_scroll figure{
+    margin-top: 50;
+}
+.bg_scroll img{
+    margin-top: 20px;  
+}
+.bg_scroll figcaption {
+    margin-top: 20px;
+    font-size: 1.6rem;
+    font-weight: 500;
+
+}
+.logo {
+    margin-top : 100px;
+}
+.team-container {
+    margin-top: 0px;
+}
+
+.team-container h1 {
+    margin-top: 0px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Flexbox для row-stuff */
+.row-stuff {
+    display: flex;
+    justify-content: center; /* Выравнивание по центру */
+    gap: 10px; /* Расстояние между элементами */
+}
+
+/* Стиль для каждого участника команды */
+.teammate {
+    display: flex;
+    flex-direction: column; /* Элементы teammate в одной колонне */
+    align-items: center; /* Выравнивание по центру */
+    text-align: center;
+    max-width: 200px; /* Ограничение ширины */
+}
+.teammate.first {
+    width: 100;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.teammate img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Круглое изображение */
+    object-fit: cover;
+}
+
+.teammate p {
+    margin: 10px 0;
+    
+}
+
+/* Стиль для кнопок */
+.teammate button {
+    width: 34px; /* Размер кнопки */
+    height: 34px;
+    border: none;
+    border-radius: 50%; /* Круглая форма */
+    background-color: #333; /* Цвет фона */
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.teammate button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}
 .projects-container {
     width: 50%;
     margin-top: 1vh;
@@ -152,4 +229,73 @@
     width: 40%; /* Ширина карты */
     height: 400px; /* Высота карты */
     border: none; 
+}
+.support-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Расстояние между кнопками */
+}
+.support-button {
+    width: 150px; /* Фиксированная ширина */
+    height: 45px; /* Фиксированная высота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px; /* Уменьшаем размер шрифта для лучшего отображения */
+    cursor: pointer;
+    border-radius: 20px; /* Закругляем углы */
+    background-color: rgb(243, 243, 243);
+    color: #4e4e4e;
+    transition: background-color 0.3s ease;
+    white-space: normal; /* Разрешаем перенос текста */
+    word-wrap: break-word; /* Перенос слов */
+    text-align: center; /* Выравниваем текст по центру */
+    padding: 0;
+    border: solid 1px #e0e0e0;
+    text-decoration: underline;
+}
+.support-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+.details-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.details {
+    margin-top: 0px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white; /* Белый фон */
+    width: 450px;
+    height: 130px;
+    gap: 10px;
+}
+
+.details-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+
+.download-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #4e4e4e;
+    border-radius: 5px;
+    background-color: rgb(243, 243, 243);
+    transition: background-color 0.3s ease;
+    border: solid #e0e0e0 1px;
+}
+
+.download-button:hover {
+    color:  rgb(177, 214, 117);/* Цвет при наведении */
 }

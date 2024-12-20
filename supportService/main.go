@@ -20,7 +20,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"https://dbbp.ru"},
+		AllowOrigins: []string{"http://localhost:3000"},
 		AllowMethods: []string{"GET"},
 		AllowHeaders: []string{"Origin", "ContentLength", "ContentType", "Content-Disposition",
 			"Content-Transfer-Encoding", "Content-Description"},
