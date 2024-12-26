@@ -1,6 +1,6 @@
 module disagn_bureau/supportService
 
-go 1.22.4
+go 1.23
 
 require (
 	disagn_bureau/shared v0.0.0

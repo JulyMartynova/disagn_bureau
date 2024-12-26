@@ -30,7 +30,7 @@ func main() {
 
 	logrus.Info("Starting support service")
 
-	if err := r.Run(":8081"); err != nil {
+	if err := r.Run(":8082"); err != nil {
 		logrus.Fatal("error with service: ", err)
 		panic(err)
 	}

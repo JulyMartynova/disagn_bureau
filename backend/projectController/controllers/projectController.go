@@ -10,8 +10,7 @@ import (
 )
 
 type ProjectInput struct {
-	Name string             `json:"project_name" binding:"required"`
-	Type models.ProjectType `json:"project_type" binding:"required"`
+	Name string `json:"project_name" binding:"required"`
 }
 
 // only for admins
@@ -136,4 +135,42 @@ func GetAllProjectsController(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, projects)
+}
+func GetIdOfProjectByNameController(c *gin.Context) {
+    var project models.Project
+    projectName := c.Param("name")
+	
+    logrus.WithFields(logrus.Fields{
+        "project_name": projectName,
+    }).Info("Searching for project")
+
+    // Ищем проект в базе данных, игнорируя регистр
+    if err := initializers.DB.Where("LOWER(name) = LOWER(?)", projectName).First(&project).Error; err != nil {
+        logrus.WithFields(logrus.Fields{
+            "Name": projectName,
+            "err":          err.Error(),
+        }).Error("Project not found")
+
+        c.JSON(http.StatusNotFound, gin.H{"error": "Project not found"})
+        return
+    }
+
+    if project.ID == 0 {
+        logrus.WithFields(logrus.Fields{
+            "Name": projectName,
+        }).Error("Project not found")
+
+        c.JSON(http.StatusNotFound, gin.H{"error": "Project not found"})
+        return
+    }
+
+    logrus.WithFields(logrus.Fields{
+        "ID": project.ID,
+        "Name":       project.Name,
+    }).Info("Project found")
+
+    c.JSON(http.StatusOK, gin.H{
+        "ID": project.ID,
+        "Name":      project.Name,
+    })
 }

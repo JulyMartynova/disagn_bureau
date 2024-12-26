@@ -10,7 +10,7 @@ export interface Projects {
 
 export const fetchProjects = async (): Promise<Projects[]> => {
     try {
-        const response = await axios.get<Projects[]>("http://localhost:8081/projects");
+        const response = await axios.get<Projects[]>(`${BASE_URL}/projects`);
         return response.data; // Возвращаем массив проектов
     } catch (error) {
         console.error("Ошибка при загрузке проектов:", error);
