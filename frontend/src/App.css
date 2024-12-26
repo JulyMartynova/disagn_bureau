@@ -1,0 +1,481 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.wrapper {
+    min-height: 100vh;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column; /* Добавлено для корректного выравнивания */
+    align-items: center; /* Добавлено для выравнивания по центру */
+}
+
+.bg_scroll {
+    position: relative; /* Обязательно для позиционирования */
+    background-image: url("../src/images/bg.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+     /* Адаптируется под содержимое */
+    width: 100%;
+    color: black; /* Цвет текста, чтобы был виден на фоне */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     /* Уменьшаем расстояние между элементами */
+    text-align: center;
+    font-size: 18px; /* Увеличим размер текста для лучшей видимости */
+    z-index: 1; /* Поместим содержимое выше */
+    gap: 5vh;/* Уменьшаем отступы сверху и снизу */
+    padding: 15vh;
+    flex: 1;
+}
+
+.bg_scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.96); /* Полупрозрачный белый фон */
+    z-index: -1; /* Поместим фон ниже содержимого */
+}
+
+.bg_scroll h1 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin: 0; /* Убираем стандартные отступы */
+}
+
+.bg_scroll h1 {
+     /* Уменьшаем отступ сверху для заголовка */
+    margin-bottom: 2vh; /* Уменьшаем отступ снизу для заголовка */
+}
+
+.bg_scroll figure {
+    margin: 0; /* Убираем стандартные отступы для figure */
+}
+
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    margin-top: 2vh;
+}
+
+.bg_scroll figcaption {
+    margin-top: 2vh; /* Уменьшаем отступ сверху для подписи */
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+/* Контейнер для команды */
+.team-container {
+    border: none;
+    border-top: 2px solid #ccc; 
+    padding-top: 30px;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.team-container h3 {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+/* Flexbox для row-stuff */
+.row-stuff {
+    display: flex;
+    justify-content: center; /* Выравнивание по центру */
+    gap: 2vh; /* Расстояние между элементами */
+}
+
+/* Стиль для каждого участника команды */
+.teammate {
+    display: flex;
+    flex-direction: column; /* Элементы teammate в одной колонне */
+    align-items: center; /* Выравнивание по центру */
+    text-align: center;
+    max-width: 200px; /* Ограничение ширины */
+    min-height: 350px; /* Фиксированная высота для всех teammate */
+    justify-content: space-between; /* Выравнивание элементов сверху и снизу */
+}
+
+/* Первый участник команды */
+.teammate.first {
+    width: 100px; /* Исправляем значение ширины */
+    margin-bottom: 3vh; /* Отступ снизу */
+    min-height: auto; /* Убираем фиксированную высоту для первого элемента */
+}
+
+/* Изображение участника */
+.teammate img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Круглое изображение */
+    object-fit: cover;
+    margin-top: 2.5vh;
+    margin-bottom: 1.5vh;
+}
+
+/* Текст p */
+.teammate p {
+    margin-top: 1vh; /* Отступы сверху и снизу */
+}
+
+/* Стиль для кнопок */
+.teammate button {
+    width: 40px; /* Размер кнопки */
+    height: 40px;
+    border: none;
+    border-radius: 50%; /* Круглая форма */
+    background-color: #333; /* Цвет фона */
+    cursor: pointer;
+    margin-top: 2vh; /* Отступ сверху */
+    display: flex;
+    align-items: center; /* Выравниваем по вертикали */
+  justify-content: center;
+}
+.teammate button img {
+    width: 35px;
+    height: 35px;
+    display: block; /* Убедитесь, что изображение ведет себя как блочный элемент */
+    margin: 0 auto;
+    background-color: transparent;
+
+    
+}
+.teammate button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}
+.partner-container {
+    display: flex; /* Используем flexbox для расположения элементов */
+    flex-direction: column; /* Заголовок и изображения будут располагаться в столбце */
+    align-items: center; /* Выравниваем по центру по горизонтали */
+    width: 100%;
+    max-width: 1200px;
+    
+/* Центрируем контейнер */
+}
+
+.partner-container h1 {
+    margin-top: 30px;
+    margin-bottom: 60px; /* Расстояние между заголовком и изображениями */
+}
+
+.partner-items {
+    display: flex; /* Используем flexbox для расположения изображений в ряд */
+    justify-content: space-between; /* Равномерное распределение пространства между изображениями */
+    width: 100%;
+    border: none; /* Убираем границы */
+    border-left: 2px solid #ccc; 
+    border-right: 2px solid #ccc; 
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.partner-item {
+    width: 31%; /* Ширина каждого изображения */
+}
+
+.partner-item img {
+    width: 100%; /* Ширина изображения адаптируется под родительский элемент */
+    height: 120px; /* Фиксированная высота */
+    object-fit: cover; /* Масштабируем изображение, чтобы оно заполнило контейнер */
+}
+
+.projects-container {
+    width: 50%;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Для позиционирования стрелок */
+    border: none; /* Убираем границы */
+    border-bottom: 2px solid #ccc; 
+    padding-bottom: 30px;
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    margin-bottom: 0; /* Расстояние между изображением и заголовком */
+    object-fit: cover;
+}
+
+.project-title {
+    margin-bottom: 2vh; /* Расстояние между заголовком и описанием */
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.project-description {
+    width: 100%;
+    margin-bottom: 3vh; /* Расстояние между описанием и кнопкой */
+}
+
+.project-button {
+    width: 25%;
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    z-index: 1000;
+    color: black;
+    padding: 1vh;
+}
+/* Основной контейнер проектов */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Два столбца */
+    gap: 5px; /* Расстояние между проектами */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Элемент проекта */
+.p-item {
+    position: relative;
+    border: none; /* Убираем границы */
+    overflow: hidden;
+    transition: none; /* Убираем анимацию увеличения */
+}
+
+/* Изображение проекта */
+.p-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Фиксированная высота изображения */
+    overflow: hidden;
+    cursor: pointer; /* Курсор при наведении */
+    margin-top: 30px;
+}
+
+.p-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Изображение заполняет всю клетку */
+    transition: opacity 0.3s ease;
+}
+
+/* Описание при наведении */
+.p-description {
+    margin-top: 10px; /* Расстояние между заголовком и описанием */
+    color: #333; /* Цвет текста */
+    font-size: 0.9rem;
+    opacity: 0; /* Скрываем описание по умолчанию */
+    transition: opacity 0.3s ease;
+}
+
+.p-item:hover .p-description {
+    opacity: 1; /* Показываем описание при наведении */
+}
+
+/* Заголовок проекта */
+.p-item h2 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: 450;
+}
+.carousel-controls {
+    position: absolute;
+    top: 40%;
+    width: 125%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.carousel-button {
+    background-color: rgb(243, 243, 243);
+    color: #4e4e4e;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+.contact-info {
+    display: flex; /* Используем Flexbox */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    gap: 10px
+}
+.contact-info a {
+    text-decoration: none;
+}
+.telegram-button {
+    background-color: #2aabee; /* Голубой цвет фона кнопки */
+    color: white; /* Белый цвет текста кнопки */
+    border: none; /* Убираем границу */
+    padding: 5px 15px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    border-radius: 20px; /* Закругленные углы */
+    display: flex; /* Используем Flexbox для выравнивания иконки и текста */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    justify-content: center;
+    gap: 5px; /* Расстояние между иконкой и текстом */
+    font-size: 14px; /* Размер текста */
+    transition: background-color 0.3s; /* Плавный переход */
+    text-decoration: none;
+}
+
+.telegram-button:hover {
+    background-color: #0056b3; /* Темно-голубой цвет фона при наведении */
+    text-decoration: none;
+}
+.telegram-button:active,
+.telegram-button:focus {
+    text-decoration: none; /* Убираем подчеркивание */
+}
+.telegram-button img{
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+.google-map {
+    margin-top: 20px; /* Отступ сверху */
+    border: 1px solid #ccc; /* Рамка вокруг карты */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    width: 40%; /* Ширина карты */
+    height: 400px; /* Высота карты */
+    border: none; 
+}
+.custom-select-container {
+    position: relative;
+    width: 450px;
+    margin-bottom: 0;
+}
+
+/* Поле ввода для поиска */
+.custom-select-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    color:#4e4e4e;
+}
+
+/* Выпадающий список */
+.custom-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Элемент выпадающего списка */
+.custom-dropdown-item {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border:none;
+    background: none;
+    transition: background-color 0.3s ease;
+}
+
+.custom-dropdown-item:hover {
+    background-color: rgb(177, 214, 117);;
+}
+
+
+.details-row span {
+    font-size: 16px;
+    color: #4e4e4e;
+}
+
+
+.details-container {
+    display: flex;
+    justify-content: center;
+}
+
+.details {
+    margin-top: 0px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white; /* Белый фон */
+    width: 450px;
+    height: 100%;
+}
+
+.details-row {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Увеличиваем расстояние между строками */
+    gap: 10px;
+}
+
+
+/* .project-name {
+    border:solid, 1px, #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    background-color:rgb(177, 214, 117);
+    width: 350px;
+    color: #4e4e4e;
+    
+    font-size: 16px;
+} */
+
+
+.download-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #4e4e4e;
+    border-radius: 5px;
+    background-color: rgb(243, 243, 243);
+    transition: background-color 0.3s ease;
+    border: solid #e0e0e0 1px;
+    
+}
+
+.download-button:hover {
+    color:  rgb(177, 214, 117);/* Цвет при наведении */
+}
