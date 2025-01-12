@@ -1,6 +1,7 @@
 module disagn_bureau/projectController
 
-go 1.23
+go 1.21
+
 
 require (
 	disagn_bureau/shared v0.0.0

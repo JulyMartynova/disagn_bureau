@@ -80,7 +80,10 @@ const TechSupportPage = () => {
 
         setIsDropdownOpen(false); // Закрываем выпадающий список
     };
-
+    const toCutDoc = documentationUrl.lastIndexOf('/');
+    const docName = documentationUrl.substring(toCutDoc + 1);
+    const toCutSoft = softwareUrl.lastIndexOf('/');
+    const softName = softwareUrl.substring(toCutSoft + 1);
     // Обработчик сброса выбранного проекта
     const handleResetProject = () => {
         setSelectedProject(null); // Сбрасываем выбранный проект
@@ -146,18 +149,19 @@ const TechSupportPage = () => {
                 </div>
 
                 {/* Ограниченное поле с двумя рядами (как на странице main) */}
-                {selectedProject && (
+                {selectedProject && selectedProject.ID &&(
                     <div className="details-container">
                         <div className="details">
                             <div className="details-row">
                                 <span>Техническая документация:</span>
-                                <a href={documentationUrl} download>
+                                <a  href={`https://dbbp.ru/api/supportService/download/documentation/${selectedProject.ID}`}
+        download = {docName}>
                                     <button className="download-button">Скачать</button>
                                 </a>
                             </div>
                             <div className="details-row">
                                 <span>Программное обеспечение:</span>
-                                <a href={softwareUrl} download>
+                                <a href={`https://dbbp.ru/api/supportService/download/software/${selectedProject.ID}`} download = {softName}>
                                     <button className="download-button">Скачать</button>
                                 </a>
                             </div>

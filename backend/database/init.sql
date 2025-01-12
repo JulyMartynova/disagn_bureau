@@ -1,2 +1,1 @@
-CREATE SCHEMA public;
-GRANT ALL SCHEMA public TO myuser;
+GRANT ALL ON SCHEMA public TO myuser;

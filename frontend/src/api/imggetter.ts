@@ -10,7 +10,7 @@ export interface Projects {
 
 export const fetchPhotos = async (currID: number) => {
     try {
-        const endpoint = BASE_URL + currID.toString();
+        const endpoint = BASE_URL + '/' + currID.toString();
         const response = await axios.get<Projects>(endpoint);
         console.log("Запрос на сервер:", endpoint);
         // Создаем объект с данными
@@ -37,7 +37,7 @@ interface ProjectResponse {
 export const fetchProjectIdByName = async (projectName: string): Promise<number> => {
     try {
         const encodedProjectName = encodeURIComponent(projectName);
-        const response = await fetch(`${BASE_URL}name/${encodedProjectName}`);
+        const response = await fetch(`${BASE_URL}/name/${encodedProjectName}`);
         if (!response.ok) {
             const errorText = await response.text(); // Получаем текст ошибки
             console.error("Ошибка от сервера:", errorText);

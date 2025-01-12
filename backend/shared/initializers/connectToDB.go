@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/sirupsen/logrus"
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -12,8 +12,8 @@ var DB *gorm.DB
 
 func ConnectToDB() {
 	var err error
-	url := os.Getenv("DB")
-	DB, err = gorm.Open(postgres.Open(url), &gorm.Config{})
+	dsn := os.Getenv("DB") // Получаем строку подключения из переменной окружения
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
 		panic("Failed to connect to database")
