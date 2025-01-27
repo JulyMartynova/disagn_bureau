@@ -2,7 +2,6 @@ module disagn_bureau/projectController
 
 go 1.21
 
-
 require (
 	disagn_bureau/shared v0.0.0
 	github.com/gin-contrib/cors v1.7.2
