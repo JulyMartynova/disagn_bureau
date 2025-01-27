@@ -31,7 +31,7 @@ export const fetchPhotos = async (currID: number) => {
 };
 interface ProjectResponse {
     ID: number;
-    name: string;
+    Name: string;
 }
 
 export const fetchProjectIdByName = async (projectName: string): Promise<number> => {

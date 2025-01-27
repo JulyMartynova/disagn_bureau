@@ -1,2 +1,2 @@
 // export const BASE_URL = process.env.REACT_APP_API_URL;
-export const BASE_URL = "https://dbbp.ru/api/projectService/projects";
+export const BASE_URL = "http://localhost:8083/projects";

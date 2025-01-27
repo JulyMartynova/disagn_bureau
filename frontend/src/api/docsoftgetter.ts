@@ -19,7 +19,7 @@ export interface ProjectDetails {
 // Функция для получения списка проектов
 export const fetchProjects = async (): Promise<Project[]> => {
     try {
-        const response = await axios.get<{ projects: Project[] }>("https://dbbp.ru/api/supportService/support"); // Указываем тип ответа
+        const response = await axios.get<{ projects: Project[] }>("http://localhost:8082/support"); // Указываем тип ответа
         return response.data.projects; // Возвращаем список проектов
     } catch (error) {
         console.error("Ошибка при загрузке проектов:", error);
@@ -29,7 +29,7 @@ export const fetchProjects = async (): Promise<Project[]> => {
 
 export const fetchProjectDetails = async (projectId: number): Promise<ProjectDetails> => {
     try {
-        const response = await axios.get<ProjectDetails>(`https://dbbp.ru/api/supportService/support/${projectId}`); 
+        const response = await axios.get<ProjectDetails>(`https://localhost:8082/support/${projectId}`); 
         return response.data; // Возвращаем данные о проекте
     } catch (error) {
         console.error("Ошибка при загрузке данных проекта:", error);
